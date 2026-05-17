@@ -1,0 +1,24 @@
+# Environment
+.env
+
+# Logs
+*.log
+
+# Docker
+docker-data/
+
+# Grafana
+monitoring/grafana/data/
+
+# Prometheus
+monitoring/prometheus/data/
+
+# VSCode
+.vscode/
+
+# Vagrant
+.vagrant/
+
+# Terraform
+*.tfstate
+*.tfstate.backup
