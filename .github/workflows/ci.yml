@@ -1,0 +1,42 @@
+name: CI/CD Validation Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-infrastructure:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Validate Docker Compose File
+      run: docker compose config
+
+    - name: Validate Prometheus Config
+      run: |
+        test -f monitoring/prometheus/prometheus.yml
+
+    - name: Verify Recovery Script Exists
+      run: |
+        test -f scripts/self-heal.sh
+
+    - name: Verify Nginx Config Exists
+      run: |
+        test -f nginx/default.conf
+
+    - name: Verify README Exists
+      run: |
+        test -f README.md
+
+    - name: Display Project Structure
+      run: |
+        tree -L 2
