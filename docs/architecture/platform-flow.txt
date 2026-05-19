@@ -1,0 +1,23 @@
+Host Machine (Xubuntu)
+        │
+        └── Vagrant VM (Debian 12)
+                │
+                ├── Docker Compose
+                │
+                ├── Reverse Proxy (Nginx)
+                │
+                ├── Web Application
+                │
+                ├── Prometheus
+                │
+                ├── Grafana
+                │
+                ├── cAdvisor
+                │
+                ├── Node Exporter
+                │
+                └── Self-Healing Engine
+                        │
+                        ├── Health Checks
+                        ├── Auto Recovery
+                        └── Recovery Logs
