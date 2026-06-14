@@ -149,7 +149,7 @@ If a container becomes unhealthy:
 
 A cron scheduler executes the recovery script every minute:
 
-```cron
+cron
 * * * * * /vagrant/scripts/self-heal.sh
 
 # 🚨 Monitoring & Alerting
@@ -268,9 +268,13 @@ docker-compose up -d
 - Multi-node container clustering
 
 ---
+# 📚 Additional Documentation
+
+- [Interview Guide](docs/interview-guide.md)
+- [Architecture Source](docs/architecture/platform-flow.mmd)
 
 # 👨‍💻 Author
-
+---
 Muhammad Kamran Kabeer
 
 DevOps Engineer focused on Linux infrastructure, observability, automation, and Infrastructure as Code.
