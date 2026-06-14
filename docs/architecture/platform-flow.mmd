@@ -1,0 +1,37 @@
+flowchart TD
+
+    U[User Browser]
+
+    N[Nginx Reverse Proxy]
+
+    W[Web Application Container]
+
+    P[Prometheus]
+
+    G[Grafana]
+
+    C[cAdvisor]
+
+    NE[Node Exporter]
+
+    S[Self-Healing Script]
+
+    CRON[Cron Scheduler]
+
+    L[Recovery Logs]
+
+    U --> N
+
+    N --> W
+
+    C --> P
+
+    NE --> P
+
+    P --> G
+
+    CRON --> S
+
+    S --> W
+
+    S --> L

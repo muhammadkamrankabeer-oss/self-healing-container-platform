@@ -1,0 +1,1 @@
+* * * * * /vagrant/scripts/self-heal.sh

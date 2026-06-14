@@ -1,4 +1,4 @@
-# 🚀 Self-Healing Container Platform
+# 🚀 Self-Healing & Observability Container Platform
 
 Production-style container platform with automated recovery, monitoring, observability, and self-healing infrastructure automation.
 
@@ -45,35 +45,9 @@ This project focuses on:
 | Debian 12 | Linux platform |
 
 ---
-
 # 🏗️ Enterprise Architecture
 
-```text
-Host Machine (Xubuntu)
-        │
-        └── Vagrant VM (Debian 12)
-                │
-                ├── Docker Compose
-                │
-                ├── Reverse Proxy (Nginx)
-                │
-                ├── Web Application
-                │
-                ├── Prometheus
-                │
-                ├── Grafana
-                │
-                ├── cAdvisor
-                │
-                ├── Node Exporter
-                │
-                └── Self-Healing Engine
-                        │
-                        ├── Health Checks
-                        │
-                        ├── Auto Recovery
-                        │
-                        └── Recovery Logs
+![Platform Architecture](docs/architecture/platform-architecture.png)
 ```
 
 ---
@@ -87,6 +61,7 @@ Host Machine (Xubuntu)
 | 📈 Observability | Live infrastructure metrics |
 | 🖥️ Container Metrics | cAdvisor integration |
 | 🧠 Auto Recovery Engine | Cron-based healing automation |
+| 🚨 Alerting | Prometheus alert rule definitions |
 | 📁 Recovery Logging | Incident & recovery logs |
 | 🧪 Incident Simulation | Failure testing environment |
 | 🌐 Reverse Proxy | Nginx frontend |
@@ -145,7 +120,50 @@ self-healing-container-platform/
 ![Self-Healing Logs](docs/screenshots/self-healing-logs.png)
 
 ---
+# 🔧 Self-Healing Implementation
 
+The self-healing engine continuously monitors the critical application container and performs automated remediation when failures are detected.
+
+### Detection Logic
+
+The recovery script checks:
+
+- Container running state
+- Docker health check status
+- Service availability
+- Recovery event logging
+
+### Recovery Actions
+
+If a container is stopped:
+
+- Docker automatically starts the service
+
+If a container becomes unhealthy:
+
+- Docker restarts the container
+- Recovery events are logged
+- Monitoring dashboards reflect service restoration
+
+### Automation
+
+A cron scheduler executes the recovery script every minute:
+
+```cron
+* * * * * /vagrant/scripts/self-heal.sh
+
+# 🚨 Monitoring & Alerting
+
+Prometheus continuously collects infrastructure and container metrics from:
+
+- Node Exporter
+- cAdvisor
+- Prometheus internal metrics
+
+Alert rule definitions are maintained in:
+
+```text
+monitoring/alerts/container-alerts.yml
 # 🔄 Self-Healing Workflow
 
 ```text
